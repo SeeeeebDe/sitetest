@@ -1,14 +1,25 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import logo from "../images/logo.png";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="bg-white shadow-md">
+    <nav className="bg-white fixed top-0 left-0 right-0 z-50 shadow-[0_4px_8px_0_rgba(139,125,107,0.15)]">
       <div className="max-w-6xl mx-auto px-4 flex justify-between items-center h-16">
-        <Link to="/" className="text-xl font-bold text-blue-700">
-          Julien Massage
+        <Link to="/" className="flex items-center space-x-3">
+          <img
+            src={logo}
+            alt="Logo Mon Instant Zen"
+            className="h-8 w-8 object-contain"
+          />
+          <span
+            className="text-xl font-bold"
+            style={{ color: "#8B7D6B" }} // beige foncé
+          >
+            Mon Instant Zen
+          </span>
         </Link>
 
         <button

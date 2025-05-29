@@ -68,4 +68,4 @@ export default function MentionsLegales() {
       </section>
     </main>
   );
-}v
+}
