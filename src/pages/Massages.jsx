@@ -121,7 +121,7 @@ function MassageCard({ title, description, url, isExpanded, onToggle }) {
            <div className="text-center pb-8 flex-shrink-0">
              {!isExpanded && (
                <>
-                 <div className="mb-2 sm:mb-4 flex justify-center items-end space-x-1 hidden sm:flex">
+                 <div className="mb-2 sm:mb-4 flex justify-center items-end space-x-1">
                     <span className="text-6xl text-zen-sage font-bold animated-dot-1">.</span>
                     <span className="text-6xl text-zen-sage font-bold animated-dot-2">.</span>
                     <span className="text-6xl text-zen-sage font-bold animated-dot-3">.</span>
