@@ -35,21 +35,26 @@ function MassageCard({ title, description, url }) {
   const backgroundImage = `url(/src/images/massages/${imageMap[title]})`;
   return (
     <motion.div
-      className="bg-white/80 rounded-lg shadow-zen p-8 flex flex-col justify-between hover:shadow-xl transition-all duration-700"
-      style={{ backgroundImage, backgroundSize: 'cover', backgroundPosition: 'center' }}
+      className="rounded-lg shadow-zen p-8 flex flex-col justify-between hover:shadow-xl transition-all duration-700 relative overflow-hidden"
+      style={{
+        backgroundImage,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
       whileHover={{ scale: 1.02 }}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.7 }}
     >
+      <div className="absolute inset-0 bg-gradient-to-b from-[#F5EBE0]/90 via-[#F5EBE0]/70 to-[#F5EBE0]/50 pointer-events-none" />
       <div className="relative z-10 text-center">
         <h3 className="text-2xl font-sans font-semibold mb-4 text-zen-taupe">{title}</h3>
         <p className="font-sans text-zen-gray-dark text-base leading-relaxed mb-8 whitespace-pre-line">{description}</p>
       </div>
       <a
         href={url}
-        className="inline-block bg-zen-taupe text-white font-sans font-medium px-8 py-3 rounded-full hover:bg-zen-gray-dark hover:shadow-zen transition-all duration-300 text-center"
+        className="relative z-10 inline-block bg-zen-taupe text-white font-sans font-medium px-8 py-3 rounded-full hover:bg-zen-gray-dark hover:shadow-zen transition-all duration-300 text-center"
       >
         Réserver ce massage
       </a>
