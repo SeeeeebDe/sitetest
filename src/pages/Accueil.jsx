@@ -17,23 +17,31 @@ export default function Accueil() {
   const fadeOpacityMultiplier = 0.9; // Multiplicateur pour réduire l'opacité dans les coins
 
   useEffect(() => {
+    let ticking = false;
+    
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setScrollY(currentScrollY);
-      setIsScrolled(currentScrollY > 100);
-      
-      // Masquer le bouton dès qu'on scroll un peu
-      if (currentScrollY > 50) {
-        setShowDiscoverButton(false);
-      } else {
-        setShowDiscoverButton(true);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          setScrollY(currentScrollY);
+          setIsScrolled(currentScrollY > 100);
+          
+          // Masquer le bouton dès qu'on scroll un peu
+          if (currentScrollY > 50) {
+            setShowDiscoverButton(false);
+          } else {
+            setShowDiscoverButton(true);
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
     
     const handleResize = () => setWindowWidth(window.innerWidth);
     
     window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize, { passive: true });
     
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -41,7 +49,7 @@ export default function Accueil() {
     };
   }, []);
 
-  // Calcul de la taille du logo basé sur le scroll
+  // Calcul de la taille du logo basé sur le scroll avec lissage
   const logoScale = Math.max(1, 3 - (scrollY / 150) * 2);
   const logoOpacity = Math.max(0.9, 1 - (scrollY / 300));
   
