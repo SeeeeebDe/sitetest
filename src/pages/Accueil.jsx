@@ -5,8 +5,10 @@ import { useState, useEffect } from "react";
 import "../styles/animated-bg.css";
 import logo from "../images/LOGO.png";
 
-export default function Home() {
+export default function Accueil() {
   const [scrollY, setScrollY] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
+  
   const [isScrolled, setIsScrolled] = useState(false);
   const [showDiscoverButton, setShowDiscoverButton] = useState(true);
 
@@ -27,9 +29,16 @@ export default function Home() {
         setShowDiscoverButton(true);
       }
     };
-
+    
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   // Calcul de la taille du logo basé sur le scroll
@@ -37,8 +46,7 @@ export default function Home() {
   const logoOpacity = Math.max(0.9, 1 - (scrollY / 300));
   
   // Calcul de la largeur adaptative du logo basé sur la fenêtre du navigateur
-  const browserWindowWidth = typeof window !== 'undefined' ? window.innerWidth : 1200;
-  const maxLogoWidth = browserWindowWidth * 0.7; // 70% de la largeur de la fenêtre du navigateur
+  const maxLogoWidth = windowWidth * 0.5; // 50% de la largeur de la fenêtre du navigateur
   const scaledLogoWidth = logoBaseWidth * logoScale;
   const logoWidth = Math.min(scaledLogoWidth, maxLogoWidth / logoScale * logoScale);
   
@@ -76,7 +84,7 @@ export default function Home() {
               transform: `scale(${logoScale})`,
               width: `${logoBaseWidth}px`,
               height: 'auto',
-              maxWidth: '70vw', // 70% de la largeur de la fenêtre (viewport width)
+              maxWidth: '50vw', // 70% de la largeur de la fenêtre (viewport width)
               borderRadius: '12px',
               boxShadow: logoScale > 1 ? `
                 0 0 0 ${(logoScale - 1) * 1}px rgba(${fadeEffectColor}, ${(logoScale - 1) * (1/(1*1)) * fadeOpacityMultiplier}),
@@ -103,7 +111,7 @@ export default function Home() {
             }}
           />
         </motion.div>
-
+  
         {/* Phrase d'accroche - toujours visible et taille fixe */}
         <motion.h1 
           className="text-4xl font-bold mb-8 drop-shadow-lg max-w-3xl text-white text-center relative z-10"
@@ -113,7 +121,7 @@ export default function Home() {
         >
           Offrez-vous une parenthèse de sérénité, sans quitter votre cocon.
         </motion.h1>
-
+  
         {/* Bouton de scroll vers le bas - visible seulement en haut */}
         <AnimatePresence>
           {showDiscoverButton && (
@@ -150,7 +158,7 @@ export default function Home() {
             </motion.div>
           )}
         </AnimatePresence>
-
+  
         <div className="max-w-3xl text-white text-center relative z-10">
           
           {/* Contenu qui apparaît au scroll */}
@@ -203,5 +211,7 @@ export default function Home() {
     </div>
   );
 }
+
+
 
   
