@@ -95,8 +95,8 @@ function MassageCard({ title, description, url, isExpanded, onToggle }) {
          <div className="flex-1 px-8 flex flex-col justify-between min-h-0">
            {/* Zone de texte - flexible et peut se réduire */}
             <div className="text-center flex-1 min-h-0 overflow-hidden">
-              {/* Phrase d'accroche - masquée sur très petits écrans */}
-              <div className="hidden sm:block">
+              {/* Phrase d'accroche - visible sur tous les écrans */}
+              <div>
                 <p className="font-sans text-zen-earth text-base leading-relaxed italic mb-1 font-medium px-4 py-2 rounded-lg" style={{
                   backgroundColor: 'rgba(255, 255, 255, 0.15)',
                   backdropFilter: 'blur(2px)',
@@ -108,11 +108,8 @@ function MassageCard({ title, description, url, isExpanded, onToggle }) {
               
               {/* Reste de la description - adaptatif selon la taille d'écran */}
               <p className={`font-sans text-zen-gray-dark text-base leading-relaxed whitespace-pre-line ${
-                !isExpanded ? 'line-clamp-1 sm:line-clamp-2 md:line-clamp-4 lg:line-clamp-6' : ''
-              }`} style={{
-                maskImage: !isExpanded ? 'linear-gradient(to bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0.8) 60%, rgba(0,0,0,0.5) 80%, rgba(0,0,0,0.3) 100%)' : 'none',
-                WebkitMaskImage: !isExpanded ? 'linear-gradient(to bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0.8) 60%, rgba(0,0,0,0.5) 80%, rgba(0,0,0,0.3) 100%)' : 'none'
-              }}>
+                !isExpanded ? 'line-clamp-3 sm:line-clamp-4 md:line-clamp-5 lg:line-clamp-6' : ''
+              }`}>
                 {description.split('\n').slice(1).join('\n')}
               </p>
             </div>
