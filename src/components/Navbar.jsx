@@ -7,48 +7,48 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-white shadow-zen px-6 py-4 font-sans sticky top-0 z-50">
+    <nav className="bg-zen-cream shadow-zen px-6 py-4 font-sans sticky top-0 z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
           <img src={Logo} alt="Logo" className="h-8 w-8" />
-          <span className="text-xl font-bold text-zen-taupe font-sans">Mon Instant Zen</span>
+          <span className="text-xl font-bold text-zen-forest font-sans">Mon Instant Zen</span>
         </Link>
         <div className="hidden md:flex gap-8 items-center">
           <NavLink
             to="/"
             className={({ isActive }) =>
-              `font-sans text-base font-medium px-3 py-2 rounded transition-colors duration-200 ${isActive ? "text-zen-taupe" : "text-zen-gray-dark hover:text-zen-taupe"}`
-            }
+                `font-sans text-base font-medium px-3 py-2 rounded transition-colors duration-200 ${isActive ? "text-zen-forest" : "text-zen-gray-dark hover:text-zen-sage"}`
+              }
           >
             Accueil
           </NavLink>
           <NavLink
             to="/massages"
             className={({ isActive }) =>
-              `font-sans text-base font-medium px-3 py-2 rounded transition-colors duration-200 ${isActive ? "text-zen-taupe" : "text-zen-gray-dark hover:text-zen-taupe"}`
-            }
+                `font-sans text-base font-medium px-3 py-2 rounded transition-colors duration-200 ${isActive ? "text-zen-forest" : "text-zen-gray-dark hover:text-zen-sage"}`
+              }
           >
             Massages
           </NavLink>
           <NavLink
             to="/contact"
             className={({ isActive }) =>
-              `font-sans text-base font-medium px-3 py-2 rounded transition-colors duration-200 ${isActive ? "text-zen-taupe" : "text-zen-gray-dark hover:text-zen-taupe"}`
-            }
+                `font-sans text-base font-medium px-3 py-2 rounded transition-colors duration-200 ${isActive ? "text-zen-forest" : "text-zen-gray-dark hover:text-zen-sage"}`
+              }
           >
             Contact
           </NavLink>
           <NavLink
             to="/mentions-legales"
             className={({ isActive }) =>
-              `font-sans text-base font-medium px-3 py-2 rounded transition-colors duration-200 ${isActive ? "text-zen-taupe" : "text-zen-gray-dark hover:text-zen-taupe"}`
-            }
+                `font-sans text-base font-medium px-3 py-2 rounded transition-colors duration-200 ${isActive ? "text-zen-forest" : "text-zen-gray-dark hover:text-zen-sage"}`
+              }
           >
             Mentions légales
           </NavLink>
         </div>
         <button
-          className="md:hidden flex items-center justify-center p-2 rounded text-zen-taupe hover:bg-zen-beige focus:outline-none"
+          className="md:hidden flex items-center justify-center p-2 rounded text-zen-forest hover:bg-zen-sage/20 focus:outline-none"
           onClick={() => setMenuOpen((open) => !open)}
           aria-label="Ouvrir le menu"
         >
@@ -71,7 +71,7 @@ export default function Navbar() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className="md:hidden mt-2 bg-white rounded-lg shadow-zen py-4 px-6 flex flex-col gap-4 font-sans"
+            className="md:hidden mt-2 bg-zen-cream rounded-lg shadow-zen py-4 px-6 flex flex-col gap-4 font-sans border border-zen-gray-light/30"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -80,7 +80,7 @@ export default function Navbar() {
             <NavLink
               to="/"
               className={({ isActive }) =>
-                `font-sans text-base font-medium px-3 py-2 rounded transition-colors duration-200 ${isActive ? "text-zen-taupe" : "text-zen-gray-dark hover:text-zen-taupe"}`
+                `font-sans text-base font-medium px-3 py-2 rounded transition-colors duration-200 ${isActive ? "text-zen-forest" : "text-zen-gray-dark hover:text-zen-sage"}`
               }
               onClick={() => setMenuOpen(false)}
             >
@@ -89,7 +89,7 @@ export default function Navbar() {
             <NavLink
               to="/massages"
               className={({ isActive }) =>
-                `font-sans text-base font-medium px-3 py-2 rounded transition-colors duration-200 ${isActive ? "text-zen-taupe" : "text-zen-gray-dark hover:text-zen-taupe"}`
+                `font-sans text-base font-medium px-3 py-2 rounded transition-colors duration-200 ${isActive ? "text-zen-forest" : "text-zen-gray-dark hover:text-zen-sage"}`
               }
               onClick={() => setMenuOpen(false)}
             >
@@ -98,7 +98,7 @@ export default function Navbar() {
             <NavLink
               to="/contact"
               className={({ isActive }) =>
-                `font-sans text-base font-medium px-3 py-2 rounded transition-colors duration-200 ${isActive ? "text-zen-taupe" : "text-zen-gray-dark hover:text-zen-taupe"}`
+                `font-sans text-base font-medium px-3 py-2 rounded transition-colors duration-200 ${isActive ? "text-zen-forest" : "text-zen-gray-dark hover:text-zen-sage"}`
               }
               onClick={() => setMenuOpen(false)}
             >
@@ -107,7 +107,7 @@ export default function Navbar() {
             <NavLink
               to="/mentions-legales"
               className={({ isActive }) =>
-                `font-sans text-base font-medium px-3 py-2 rounded transition-colors duration-200 ${isActive ? "text-zen-taupe" : "text-zen-gray-dark hover:text-zen-taupe"}`
+                `font-sans text-base font-medium px-3 py-2 rounded transition-colors duration-200 ${isActive ? "text-zen-forest" : "text-zen-gray-dark hover:text-zen-sage"}`
               }
               onClick={() => setMenuOpen(false)}
             >

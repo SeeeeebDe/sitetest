@@ -8,11 +8,17 @@ export default {
     extend: {
       colors: {
         'zen': {
-          'beige': '#F5F5F5',
-          'taupe': '#4A4A4A',
+          'beige': '#F5EBE0',
+          'cream': '#FAF7F2',
+          'sage': '#9CAF88',
+          'forest': '#6B8E5A',
+          'taupe': '#8B7355',
+          'earth': '#A0826D',
+          'stone': '#7D6E5B',
           'gray': {
-            'light': '#6B7280',
-            'dark': '#4A4A4A'
+            'light': '#B8AFA0',
+            'medium': '#8B7D6B',
+            'dark': '#5D5347'
           }
         }
       },

@@ -1,19 +1,26 @@
 // pages/MentionsLegales.jsx
 import { motion } from "framer-motion";
+import "../styles/animated-bg.css";
 
 export default function MentionsLegales() {
   return (
-    <motion.main 
-      className="max-w-4xl mx-auto py-16 px-8 text-zen-gray-dark font-sans leading-relaxed space-y-12"
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7 }}
-    >
-      <h1 className="text-4xl font-sans font-bold mb-12 text-center text-zen-taupe">
-        Mentions légales
-      </h1>
+    <div className="relative overflow-hidden min-h-screen">
+      <div className="relaxing-background min-h-screen">
+        {/* Couches de couleurs pour l'effet de profondeur */}
+        <div className="color-layer-1 pointer-events-none"></div>
+        <div className="color-layer-2 pointer-events-none"></div>
+        
+        <motion.main 
+          className="max-w-4xl mx-auto py-16 px-8 text-zen-gray-dark font-sans leading-relaxed space-y-12 relative z-10"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+        >
+      <h1 className="text-4xl font-sans font-bold mb-12 text-center text-zen-forest drop-shadow-lg">
+          Mentions légales
+        </h1>
       <section className="mb-8">
-            <h2 className="text-2xl font-sans font-semibold mb-4 text-zen-taupe">Conditions d'exercice et réservations</h2>
+            <h2 className="text-2xl font-sans font-semibold mb-4 text-zen-forest">Conditions d'exercice et réservations</h2>
             <div className="text-zen-gray-dark space-y-4" style={{ fontFamily: "'Poppins', sans-serif" }}>
               <p className="leading-relaxed">
                 Mon Instant Zen propose des prestations de massage bien-être à domicile, exclusivement destinées à la relaxation et au bien-être. Ces massages sont pratiqués uniquement au domicile du client, dans le respect des conditions suivantes :
@@ -28,8 +35,8 @@ export default function MentionsLegales() {
             </div>
       </section>
 
-      <section className="bg-zen-beige p-8 rounded-lg shadow-zen">
-        <p className="italic text-zen-gray-light text-center">
+      <section className="bg-zen-sage/20 p-8 rounded-lg shadow-zen border border-zen-sage/30">
+        <p className="italic text-zen-forest text-center font-medium">
           Activité exclue du champ de la réglementation médicale.<br />
           Les massages proposés sont non thérapeutiques et ne s'apparentent à aucun acte médical.
         </p>
@@ -45,8 +52,8 @@ export default function MentionsLegales() {
       </section>
 
 
-      <section className="mb-8 bg-zen-beige p-8 rounded-lg shadow-zen">
-        <h2 className="text-2xl font-sans font-semibold mb-4 text-zen-taupe">Éditeur du site</h2>
+      <section className="mb-8 bg-white/80 p-8 rounded-lg shadow-zen border border-zen-gray-light/30">
+        <h2 className="text-2xl font-sans font-semibold mb-4 text-zen-forest">Éditeur du site</h2>
         <ul className="list-disc list-inside space-y-2 ml-4">
           <li><span className="font-medium">Nom :</span> Sébastien Dréano</li>
           <li><span className="font-medium">Statut :</span> Micro-entrepreneur</li>
@@ -58,20 +65,20 @@ export default function MentionsLegales() {
         </ul>
       </section>
 
-      <section className="mb-8 bg-zen-beige p-8 rounded-lg shadow-zen">
-        <h2 className="text-2xl font-sans font-semibold mb-4 text-zen-taupe">Hébergement</h2>
+      <section className="mb-8 bg-white/80 p-8 rounded-lg shadow-zen border border-zen-gray-light/30">
+        <h2 className="text-2xl font-sans font-semibold mb-4 text-zen-forest">Hébergement</h2>
         <p>
           Le site est hébergé par :
           <br />
           OVHCloud<br />
           2 rue Kellermann<br />
           59100 Roubaix, France<br />
-          Site : <a href="https://www.ovhcloud.com" target="_blank" rel="noopener noreferrer" className="text-zen-taupe hover:text-zen-gray-light underline transition-colors">https://www.ovhcloud.com</a>
+          Site : <a href="https://www.ovhcloud.com" target="_blank" rel="noopener noreferrer" className="text-zen-sage hover:text-zen-forest underline transition-colors">https://www.ovhcloud.com</a>
         </p>
       </section>
 
-      <section className="mb-8 bg-zen-beige p-8 rounded-lg shadow-zen">
-        <h2 className="text-2xl font-sans font-semibold mb-4 text-zen-taupe">Propriété intellectuelle</h2>
+      <section className="mb-8 bg-white/80 p-8 rounded-lg shadow-zen border border-zen-gray-light/30">
+        <h2 className="text-2xl font-sans font-semibold mb-4 text-zen-forest">Propriété intellectuelle</h2>
         <p>
           L'ensemble du contenu présent sur ce site (textes, graphismes, logo)
           est la propriété exclusive de Sébastien Dréano, sauf mention contraire. Images libres de droits. Toute
@@ -79,17 +86,19 @@ export default function MentionsLegales() {
         </p>
       </section>
 
-      <section className="mb-8 bg-zen-beige p-8 rounded-lg shadow-zen">
-        <h2 className="text-2xl font-sans font-semibold mb-4 text-zen-taupe">Traitement des données personnelles</h2>
+      <section className="mb-8 bg-white/80 p-8 rounded-lg shadow-zen border border-zen-gray-light/30">
+        <h2 className="text-2xl font-sans font-semibold mb-4 text-zen-forest">Traitement des données personnelles</h2>
         <p>
           Les informations collectées via le formulaire de contact sont utilisées
           uniquement pour répondre à vos demandes. Conformément à la loi "Informatique
           et Libertés" et au RGPD, vous disposez d'un droit d'accès, de rectification
           et de suppression des données vous concernant. Pour exercer ce droit,
-          contactez : <a href="mailto:contact@moninstantzen.fr" className="text-zen-taupe hover:text-zen-gray-light underline transition-colors">contact@moninstantzen.fr</a>
+          contactez : <a href="mailto:contact@moninstantzen.fr" className="text-zen-sage hover:text-zen-forest underline transition-colors">contact@moninstantzen.fr</a>
         </p>
       </section>
 
-    </motion.main>
+        </motion.main>
+      </div>
+    </div>
   );
 }

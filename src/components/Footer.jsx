@@ -1,7 +1,15 @@
+import Logo from '../images/LOGO.png';
+import { Link } from 'react-router-dom';
+
 export default function Footer() {
   return (
-    <footer className="bg-white border-t border-zen-beige mt-16 py-6 text-center text-zen-gray-dark text-sm font-sans">
-      © 2023 Mon Instant Zen — Massages bien-être à domicile
+    <footer className="bg-zen-stone py-8 px-6 font-sans border-t border-zen-gray-light/30 text-zen-gray-light text-sm">
+      <div className="max-w-7xl mx-auto text-center">
+        
+
+          <p>&copy; 2024 Mon Instant Zen. Tous droits réservés.</p>
+
+      </div>
     </footer>
   );
 }

@@ -1,7 +1,7 @@
 .animated-background {
   background: linear-gradient(270deg, #F5F5DC, #FFFFFF, #F5F5DC, #F0F0D0);
   background-size: 800% 800%;
-  animation: gradientShift 20s ease infinite;
+  animation: gradientShift 12s ease infinite;
 }
 
 @keyframes gradientShift {
@@ -21,13 +21,16 @@
   background-size: 400% 400%;
   position: relative;
   overflow: hidden;
-  animation: subtleShift 40s ease-in-out infinite alternate;
+  animation: subtleShift 24s ease-in-out infinite;
 }
 
 /* Animation du fond avec dégradé beige subtil */
 @keyframes subtleShift {
   0% { background-position: 0% 0%; }
-  100% { background-position: 100% 100%; }
+  25% { background-position: 100% 0%; }
+  50% { background-position: 100% 100%; }
+  75% { background-position: 0% 100%; }
+  100% { background-position: 0% 0%; }
 }
 
 /* Animation de la goutte et propagation d'onde */
@@ -176,7 +179,7 @@
   );
   opacity: 0;
   transform: scale(0.01);
-  animation: dropEffect 24s cubic-bezier(0.215, 0.610, 0.355, 1.000) infinite;
+  animation: dropEffect 15s cubic-bezier(0.215, 0.610, 0.355, 1.000) infinite;
   pointer-events: none;
   mix-blend-mode: soft-light;
   filter: blur(15px);
@@ -203,7 +206,7 @@
   );
   opacity: 0;
   transform: scale(0.01);
-  animation: dropEffect 24s cubic-bezier(0.215, 0.610, 0.355, 1.000) infinite 8s;
+  animation: dropEffect 15s cubic-bezier(0.215, 0.610, 0.355, 1.000) infinite 5s;
   pointer-events: none;
   mix-blend-mode: overlay;
   filter: blur(15px);
@@ -229,7 +232,7 @@
   );
   opacity: 0;
   transform: scale(0.01);
-  animation: dropEffect 24s cubic-bezier(0.215, 0.610, 0.355, 1.000) infinite 16s;
+  animation: dropEffect 15s cubic-bezier(0.215, 0.610, 0.355, 1.000) infinite 10s;
   pointer-events: none;
   z-index: 1;
   mix-blend-mode: soft-light;
@@ -283,7 +286,7 @@
   background-size: 400% 400%;
   position: relative;
   overflow: hidden;
-  animation: gentleBreathing 20s ease-in-out infinite;
+  animation: gentleBreathing 12s ease-in-out infinite;
 }
 
 /* Animation de respiration douce - mouvement très lent et apaisant */
@@ -292,7 +295,7 @@
   25% { background-position: 25% 25%; filter: brightness(1) saturate(1); }
   50% { background-position: 50% 50%; filter: brightness(0.98) saturate(0.98); }
   75% { background-position: 75% 75%; filter: brightness(1) saturate(1); }
-  100% { background-position: 100% 100%; filter: brightness(1.02) saturate(1.02); }
+  100% { background-position: 0% 0%; filter: brightness(1.02) saturate(1.02); }
 }
 
 /* Couches de couleurs superposées pour créer de la profondeur */
@@ -309,7 +312,7 @@
     rgba(230, 223, 209, 0.15) 30%,
     rgba(230, 223, 209, 0) 70%
   );
-  animation: colorFlow 25s ease-in-out infinite;
+  animation: colorFlow 15s ease-in-out infinite;
   mix-blend-mode: soft-light;
 }
 
@@ -326,7 +329,7 @@
     rgba(191, 169, 143, 0.15) 30%,
     rgba(191, 169, 143, 0) 70%
   );
-  animation: colorFlow 25s ease-in-out infinite reverse;
+  animation: colorFlow 15s ease-in-out infinite reverse;
   mix-blend-mode: soft-light;
 }
 
@@ -352,7 +355,7 @@
     rgba(214, 204, 184, 0.15) 30%,
     rgba(214, 204, 184, 0) 70%
   );
-  animation: colorFlow 30s ease-in-out infinite;
+  animation: colorFlow 18s ease-in-out infinite;
   mix-blend-mode: soft-light;
   transform-origin: bottom left;
 }
@@ -369,7 +372,7 @@
     rgba(222, 213, 195, 0.15) 30%,
     rgba(222, 213, 195, 0) 70%
   );
-  animation: colorFlow 30s ease-in-out 5s infinite reverse;
+  animation: colorFlow 18s ease-in-out 3s infinite reverse;
   mix-blend-mode: soft-light;
   transform-origin: top right;
 }

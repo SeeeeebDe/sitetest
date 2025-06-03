@@ -27,7 +27,7 @@ export default function Home() {
           <p className="mb-10 text-lg drop-shadow-md">
             Chaque séance est pensée pour vous reconnecter à votre corps, dans une ambiance douce, moderne et apaisante. Respirez… vous êtes entre de bonnes mains.
           </p>
-          <Link to="/massages" className="inline-block bg-zen-taupe hover:bg-zen-taupe/90 text-white font-medium py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+          <Link to="/massages" className="inline-block bg-zen-sage hover:bg-zen-forest text-white font-medium py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
             Découvrir les massages
           </Link>
         </div>
