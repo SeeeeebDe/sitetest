@@ -1,5 +1,5 @@
-.animated-gradient {
-  background: linear-gradient(270deg, #cbd5e1, #f0fdfa, #dbeafe, #e0f2fe);
+.animated-background {
+  background: linear-gradient(270deg, #F5F5DC, #FFFFFF, #F5F5DC, #F0F0D0);
   background-size: 800% 800%;
   animation: gradientShift 20s ease infinite;
 }
@@ -14,6 +14,364 @@
   100% {
     background-position: 0% 50%;
   }
+}
+
+.animated-wave-background {
+  background: linear-gradient(135deg, #E6D7B9, #D9C6A5, #BFA98F, #E6D7B9);
+  background-size: 400% 400%;
+  position: relative;
+  overflow: hidden;
+  animation: subtleShift 40s ease-in-out infinite alternate;
+}
+
+/* Animation du fond avec dégradé beige subtil */
+@keyframes subtleShift {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
+}
+
+/* Animation de la goutte et propagation d'onde */
+@keyframes dropAndRipple {
+  /* Phase initiale - goutte invisible */
+  0% {
+    opacity: 0;
+    transform: scale(0.01);
+    filter: blur(2px);
+  }
+  /* Apparition de la goutte */
+  2% {
+    opacity: 0.9;
+    transform: scale(0.05);
+    filter: blur(3px);
+  }
+  /* Impact de la goutte */
+  5% {
+    opacity: 0.8;
+    transform: scale(0.1);
+    filter: blur(5px);
+  }
+  /* Début de propagation */
+  10% {
+    opacity: 0.7;
+    transform: scale(0.3);
+    filter: blur(8px);
+  }
+  /* Propagation continue */
+  20% {
+    opacity: 0.6;
+    transform: scale(0.8);
+    filter: blur(12px);
+  }
+  40% {
+    opacity: 0.5;
+    transform: scale(1.5);
+    filter: blur(18px);
+  }
+  60% {
+    opacity: 0.3;
+    transform: scale(2.2);
+    filter: blur(22px);
+  }
+  80% {
+    opacity: 0.1;
+    transform: scale(2.8);
+    filter: blur(26px);
+  }
+  /* Fin de propagation - onde disparaît */
+  95%, 100% {
+    opacity: 0;
+    transform: scale(3);
+    filter: blur(30px);
+  }
+}
+
+/* Classe pour générer dynamiquement les gouttes */
+.water-drop {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  mix-blend-mode: soft-light;
+  will-change: transform, opacity;
+}
+
+/* Variations de couleurs beige pour les gouttes */
+.drop-color-1 {
+  background: radial-gradient(
+    circle,
+    rgba(222, 213, 195, 0.4) 0%,
+    rgba(222, 213, 195, 0.35) 5%,
+    rgba(222, 213, 195, 0.3) 10%,
+    rgba(222, 213, 195, 0.25) 20%,
+    rgba(222, 213, 195, 0.2) 30%,
+    rgba(222, 213, 195, 0.15) 50%,
+    rgba(222, 213, 195, 0.1) 70%,
+    rgba(222, 213, 195, 0.05) 85%,
+    rgba(222, 213, 195, 0) 100%
+  );
+}
+
+.drop-color-2 {
+  background: radial-gradient(
+    circle,
+    rgba(214, 204, 184, 0.4) 0%,
+    rgba(214, 204, 184, 0.35) 5%,
+    rgba(214, 204, 184, 0.3) 10%,
+    rgba(214, 204, 184, 0.25) 20%,
+    rgba(214, 204, 184, 0.2) 30%,
+    rgba(214, 204, 184, 0.15) 50%,
+    rgba(214, 204, 184, 0.1) 70%,
+    rgba(214, 204, 184, 0.05) 85%,
+    rgba(214, 204, 184, 0) 100%
+  );
+}
+
+.drop-color-3 {
+  background: radial-gradient(
+    circle,
+    rgba(230, 223, 209, 0.4) 0%,
+    rgba(230, 223, 209, 0.35) 5%,
+    rgba(230, 223, 209, 0.3) 10%,
+    rgba(230, 223, 209, 0.25) 20%,
+    rgba(230, 223, 209, 0.2) 30%,
+    rgba(230, 223, 209, 0.15) 50%,
+    rgba(230, 223, 209, 0.1) 70%,
+    rgba(230, 223, 209, 0.05) 85%,
+    rgba(230, 223, 209, 0) 100%
+  );
+}
+
+.drop-color-4 {
+  background: radial-gradient(
+    circle,
+    rgba(191, 169, 143, 0.4) 0%,
+    rgba(191, 169, 143, 0.35) 5%,
+    rgba(191, 169, 143, 0.3) 10%,
+    rgba(191, 169, 143, 0.25) 20%,
+    rgba(191, 169, 143, 0.2) 30%,
+    rgba(191, 169, 143, 0.15) 50%,
+    rgba(191, 169, 143, 0.1) 70%,
+    rgba(191, 169, 143, 0.05) 85%,
+    rgba(191, 169, 143, 0) 100%
+  );
+}
+
+/* Première goutte - centre */
+.animated-wave-background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(222, 213, 195, 0.25) 0%,
+    rgba(222, 213, 195, 0.2) 5%,
+    rgba(222, 213, 195, 0.15) 15%,
+    rgba(222, 213, 195, 0.1) 30%,
+    rgba(222, 213, 195, 0.05) 50%,
+    rgba(222, 213, 195, 0.02) 75%,
+    rgba(222, 213, 195, 0) 100%
+  );
+  opacity: 0;
+  transform: scale(0.01);
+  animation: dropEffect 24s cubic-bezier(0.215, 0.610, 0.355, 1.000) infinite;
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+  filter: blur(15px);
+  transform-origin: center 30%;
+}
+
+/* Deuxième goutte - coin supérieur droit */
+.animated-wave-background::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at 70% 20%,
+    rgba(222, 213, 195, 0.25) 0%,
+    rgba(222, 213, 195, 0.2) 5%,
+    rgba(222, 213, 195, 0.15) 15%,
+    rgba(222, 213, 195, 0.1) 30%,
+    rgba(222, 213, 195, 0.05) 50%,
+    rgba(222, 213, 195, 0.02) 75%,
+    rgba(222, 213, 195, 0) 100%
+  );
+  opacity: 0;
+  transform: scale(0.01);
+  animation: dropEffect 24s cubic-bezier(0.215, 0.610, 0.355, 1.000) infinite 8s;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  filter: blur(15px);
+  transform-origin: 70% 20%;
+}
+
+/* Troisième goutte - coin inférieur gauche */
+.wave-ripple-1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at 30% 80%,
+    rgba(222, 213, 195, 0.25) 0%,
+    rgba(222, 213, 195, 0.2) 5%,
+    rgba(222, 213, 195, 0.15) 15%,
+    rgba(222, 213, 195, 0.1) 30%,
+    rgba(222, 213, 195, 0.05) 50%,
+    rgba(222, 213, 195, 0.02) 75%,
+    rgba(222, 213, 195, 0) 100%
+  );
+  opacity: 0;
+  transform: scale(0.01);
+  animation: dropEffect 24s cubic-bezier(0.215, 0.610, 0.355, 1.000) infinite 16s;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: soft-light;
+  filter: blur(15px);
+  transform-origin: 30% 80%;
+}
+
+/* Animation de l'effet de goutte */
+@keyframes dropEffect {
+  0%, 5% {
+    transform: scale(0.01);
+    opacity: 0;
+    filter: blur(5px);
+  }
+  7% {
+    transform: scale(0.1);
+    opacity: 0.8;
+    filter: blur(10px);
+  }
+  10% {
+    transform: scale(0.15);
+    opacity: 0.7;
+    filter: blur(12px);
+  }
+  20% {
+    transform: scale(0.5);
+    opacity: 0.5;
+    filter: blur(15px);
+  }
+  40% {
+    transform: scale(1.2);
+    opacity: 0.3;
+    filter: blur(20px);
+  }
+  70% {
+    transform: scale(2);
+    opacity: 0.1;
+    filter: blur(25px);
+  }
+  90%, 100% {
+    transform: scale(2.5);
+    opacity: 0;
+    filter: blur(30px);
+  }
+}
+
+/* Animation du fond avec dégradé beige subtil */
+/* Animation du fond avec dégradé beige subtil */
+.relaxing-background {
+  background: linear-gradient(135deg, #E6D7B9, #D9C6A5, #BFA98F, #E6D7B9);
+  background-size: 400% 400%;
+  position: relative;
+  overflow: hidden;
+  animation: gentleBreathing 20s ease-in-out infinite;
+}
+
+/* Animation de respiration douce - mouvement très lent et apaisant */
+@keyframes gentleBreathing {
+  0% { background-position: 0% 0%; filter: brightness(1.02) saturate(1.02); }
+  25% { background-position: 25% 25%; filter: brightness(1) saturate(1); }
+  50% { background-position: 50% 50%; filter: brightness(0.98) saturate(0.98); }
+  75% { background-position: 75% 75%; filter: brightness(1) saturate(1); }
+  100% { background-position: 100% 100%; filter: brightness(1.02) saturate(1.02); }
+}
+
+/* Couches de couleurs superposées pour créer de la profondeur */
+.relaxing-background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at 30% 40%,
+    rgba(230, 223, 209, 0.3) 0%,
+    rgba(230, 223, 209, 0.15) 30%,
+    rgba(230, 223, 209, 0) 70%
+  );
+  animation: colorFlow 25s ease-in-out infinite;
+  mix-blend-mode: soft-light;
+}
+
+.relaxing-background::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at 70% 60%,
+    rgba(191, 169, 143, 0.3) 0%,
+    rgba(191, 169, 143, 0.15) 30%,
+    rgba(191, 169, 143, 0) 70%
+  );
+  animation: colorFlow 25s ease-in-out infinite reverse;
+  mix-blend-mode: soft-light;
+}
+
+/* Animation de flux de couleur - mouvement très doux */
+@keyframes colorFlow {
+  0% { opacity: 0.4; transform: scale(1.1) rotate(0deg); }
+  25% { opacity: 0.6; transform: scale(1.05) rotate(1deg); }
+  50% { opacity: 0.8; transform: scale(1) rotate(0deg); }
+  75% { opacity: 0.6; transform: scale(1.05) rotate(-1deg); }
+  100% { opacity: 0.4; transform: scale(1.1) rotate(0deg); }
+}
+
+/* Couches supplémentaires pour plus de profondeur et de mouvement */
+.color-layer-1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at 20% 80%,
+    rgba(214, 204, 184, 0.3) 0%,
+    rgba(214, 204, 184, 0.15) 30%,
+    rgba(214, 204, 184, 0) 70%
+  );
+  animation: colorFlow 30s ease-in-out infinite;
+  mix-blend-mode: soft-light;
+  transform-origin: bottom left;
+}
+
+.color-layer-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at 80% 20%,
+    rgba(222, 213, 195, 0.3) 0%,
+    rgba(222, 213, 195, 0.15) 30%,
+    rgba(222, 213, 195, 0) 70%
+  );
+  animation: colorFlow 30s ease-in-out 5s infinite reverse;
+  mix-blend-mode: soft-light;
+  transform-origin: top right;
 }
 
 

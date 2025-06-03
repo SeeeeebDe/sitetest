@@ -1,95 +1,70 @@
 // pages/Contact.jsx
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import "../styles/animated-bg.css";
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <motion.main
-      className="max-w-xl mx-auto p-6"
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7 }}
-    >
-      <h2 className="text-3xl font-bold mb-6 text-gray-900 text-center">
-        Contactez-moi
-      </h2>
-      <p className="mb-8 text-gray-700 text-center">
-        Je suis disponible sur rendez-vous, à l’heure qui vous convient. Pour
-        toute question ou pour planifier votre massage à domicile, n’hésitez
-        pas à utiliser le formulaire ci-dessous ou à me contacter directement.
-        Je me ferai un plaisir de vous répondre rapidement et avec
-        bienveillance.
-      </p>
+    <main className="min-h-screen relaxing-background flex items-center justify-center px-4">
+      {/* Couches de couleurs pour l'effet de profondeur */}
+      <div className="color-layer-1 pointer-events-none"></div>
+      <div className="color-layer-2 pointer-events-none"></div>
 
-      {submitted ? (
-        <p className="text-green-600 font-semibold text-center">
-          Merci pour votre message, je vous répondrai très vite !
-        </p>
-      ) : (
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            const form = e.target;
-            fetch("https://formspree.io/f/xlezvopw", {
-              method: "POST",
-              headers: {
-                Accept: "application/json",
-              },
-              body: new FormData(form),
-            }).then((res) => {
-              if (res.ok) {
-                setSubmitted(true);
-                form.reset();
-              } else {
-                alert("Une erreur est survenue, merci de réessayer.");
-              }
-            });
-          }}
-          className="flex flex-col gap-5"
-        >
-          <label className="flex flex-col">
-            <span className="mb-1 font-medium text-gray-800">Nom</span>
+      <motion.div
+        className="bg-white/80 rounded-2xl shadow-zen p-10 max-w-xl w-full text-center relative z-10"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <h2 className="text-4xl font-sans font-bold mb-6 text-zen-taupe">Contact</h2>
+        {submitted ? (
+          <div className="text-lg font-sans text-zen-taupe mb-8">
+            Merci pour votre message ! Je vous répondrai dans les plus brefs délais.
+          </div>
+        ) : (
+          <form
+            className="space-y-6"
+            onSubmit={e => {
+              e.preventDefault();
+              setSubmitted(true);
+            }}
+          >
             <input
               type="text"
-              name="name"
+              placeholder="Nom"
               required
-              className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Votre nom"
+              className="w-full px-4 py-3 rounded-lg border border-zen-gray-light bg-white/80 font-sans text-zen-taupe focus:outline-none focus:ring-2 focus:ring-zen-taupe"
             />
-          </label>
-
-          <label className="flex flex-col">
-            <span className="mb-1 font-medium text-gray-800">Email</span>
             <input
               type="email"
-              name="email"
+              placeholder="Email"
               required
-              className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="votre.email@example.com"
+              className="w-full px-4 py-3 rounded-lg border border-zen-gray-light bg-white/80 font-sans text-zen-taupe focus:outline-none focus:ring-2 focus:ring-zen-taupe"
             />
-          </label>
-
-          <label className="flex flex-col">
-            <span className="mb-1 font-medium text-gray-800">Message</span>
             <textarea
-              name="message"
+              placeholder="Votre message"
               required
               rows={5}
-              className="border border-gray-300 rounded px-3 py-2 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Votre message"
-            ></textarea>
-          </label>
-
-          <button
-            type="submit"
-            className="bg-blue-600 text-white font-semibold py-3 rounded hover:bg-blue-700 transition-colors"
-          >
-            Envoyer
-          </button>
-        </form>
-      )}
-    </motion.main>
+              className="w-full px-4 py-3 rounded-lg border border-zen-gray-light bg-white/80 font-sans text-zen-taupe focus:outline-none focus:ring-2 focus:ring-zen-taupe"
+            />
+            <button
+              type="submit"
+              className="w-full bg-zen-taupe text-white font-sans font-medium px-8 py-3 rounded-full hover:bg-zen-gray-dark hover:shadow-zen transition-all duration-300"
+            >
+              Envoyer
+            </button>
+          </form>
+        )}
+        <Link
+          to="/massages"
+          className="inline-block mt-8 bg-white/80 text-zen-taupe font-sans font-medium px-8 py-3 rounded-full hover:bg-white hover:shadow-zen transition-all duration-300 text-center"
+        >
+          Découvrir les massages
+        </Link>
+      </motion.div>
+    </main>
   );
 }
