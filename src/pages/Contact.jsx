@@ -58,12 +58,6 @@ export default function Contact() {
             </button>
           </form>
         )}
-        <Link
-          to="/massages"
-          className="inline-block mt-8 bg-white/80 text-zen-taupe font-sans font-medium px-8 py-3 rounded-full hover:bg-white hover:shadow-zen transition-all duration-300 text-center"
-        >
-          Découvrir les massages
-        </Link>
       </motion.div>
     </main>
   );

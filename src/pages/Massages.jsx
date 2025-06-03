@@ -1,5 +1,16 @@
 // pages/Massages.jsx
 import { motion } from "framer-motion";
+import californien from "../images/massages/californien.jpg";
+import suedois from "../images/massages/suedois.jpeg";
+import decouverte from "../images/massages/decouverte.jpg";
+import enfant from "../images/massages/enfant.jpeg";
+
+const imageMap = {
+  "Massage Californien": californien,
+  "Massage Suédois": suedois,
+  "Massage Découverte": decouverte,
+  "Massage Enfant (4 à 12 ans)": enfant
+};
 
 const massages = [
   {
@@ -24,15 +35,9 @@ const massages = [
   },
 ];
 
-const imageMap = {
-  "Massage Californien": "californien.jpg",
-  "Massage Suédois": "suedois.jpeg",
-  "Massage Découverte": "decouverte.jpg",
-  "Massage Enfant (4 à 12 ans)": "enfant.jpeg",
-};
 
 function MassageCard({ title, description, url }) {
-  const backgroundImage = `url(/src/images/massages/${imageMap[title]})`;
+  const backgroundImage = `url(${imageMap[title]})`;
   return (
     <motion.div
       className="rounded-lg shadow-zen p-8 flex flex-col justify-between hover:shadow-xl transition-all duration-700 relative overflow-hidden"
