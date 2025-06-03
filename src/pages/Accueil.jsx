@@ -11,7 +11,7 @@ export default function Home() {
   const [showDiscoverButton, setShowDiscoverButton] = useState(true);
 
   // Variables pour ajuster facilement le logo et l'effet de fade
-  const logoWidth = 120; // Largeur du logo en pixels
+  const logoBaseWidth = 120; // Largeur de base du logo en pixels (taille quand scrollé)
   const fadeOpacityMultiplier = 0.9; // Multiplicateur pour réduire l'opacité dans les coins
 
   useEffect(() => {
@@ -35,6 +35,12 @@ export default function Home() {
   // Calcul de la taille du logo basé sur le scroll
   const logoScale = Math.max(1, 3 - (scrollY / 150) * 2);
   const logoOpacity = Math.max(0.9, 1 - (scrollY / 300));
+  
+  // Calcul de la largeur adaptative du logo basé sur la fenêtre du navigateur
+  const browserWindowWidth = typeof window !== 'undefined' ? window.innerWidth : 1200;
+  const maxLogoWidth = browserWindowWidth * 0.7; // 70% de la largeur de la fenêtre du navigateur
+  const scaledLogoWidth = logoBaseWidth * logoScale;
+  const logoWidth = Math.min(scaledLogoWidth, maxLogoWidth / logoScale * logoScale);
   
   // Paramètres ajustables pour l'effet du logo
   const fadeEffectColor = '235, 220, 190'; // RGB values for rgba()
@@ -68,8 +74,9 @@ export default function Home() {
             style={{ 
               opacity: logoOpacity,
               transform: `scale(${logoScale})`,
-              width: `${logoWidth}px`,
+              width: `${logoBaseWidth}px`,
               height: 'auto',
+              maxWidth: '70vw', // 70% de la largeur de la fenêtre (viewport width)
               borderRadius: '12px',
               boxShadow: logoScale > 1 ? `
                 0 0 0 ${(logoScale - 1) * 1}px rgba(${fadeEffectColor}, ${(logoScale - 1) * (1/(1*1)) * fadeOpacityMultiplier}),

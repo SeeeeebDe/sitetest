@@ -12,7 +12,7 @@ const imageMap = {
   "Massage Californien": californien,
   "Massage Suédois": suedois,
   "Massage Découverte": decouverte,
-  "Massage Enfant (4 à 12 ans)": enfant
+  "Massage Enfant\n(4 à 12 ans)": enfant
 };
 
 const massages = [
@@ -32,7 +32,7 @@ const massages = [
     url: "https://booking.myrezapp.com/fr/online/booking/step1/14025/59061",
   },
   {
-    title: "Massage Enfant (4 à 12 ans)",
+    title: "Massage Enfant\n(4 à 12 ans)",
     description: "Massage découverte adapté aux enfants.\nD'une durée plus courte pour convenir à la disponibilité des plus jeunes, il est adapté selon l'âge et sur mesure pour répondre aux attentes et appréhensions de l'enfant.\n\nMassage à la carte pour les enfants, basé sur les 3 grands types de massages :\n- le massage musculaire (dos) pour une relaxation profonde et découvrir les sensations du massage tel que les petits sportifs se le représentent\n- le massage énergétique (jambes) pour stimuler la circulation et apaiser, une découverte toujours appréciée\n- le massage psychosensoriel (buste, bras, crâne) pour s'essayer à l'apaisement et au relâchement de l'esprit\n\nLes enfants ont comme particularité pour les plus jeunes de vivre leur éveil corporel et d'avoir un schéma corporel encore en construction : l'échange sur leur vision du corps et du massage est essentiel, et leurs attentes et appréhensions sont la base qui définît le massage idéal pour eux.\nComme pour les adultes, un temps d'échange précède donc toujours le massage !",
     url: "https://booking.myrezapp.com/fr/online/booking/step1/14025/93908",
   },
@@ -89,7 +89,22 @@ function MassageCard({ title, description, url, isExpanded, onToggle }) {
        <div className="relative z-10 h-full flex flex-col">
          {/* Titre fixe en haut */}
          <div className="p-8 pb-4">
-           <h3 className="text-2xl font-sans font-semibold text-center text-zen-forest">{title}</h3>
+           <h3 className="text-2xl font-sans font-semibold text-center text-zen-forest">
+             {title.includes('\n') ? (
+               title.split('\n').map((line, index) => (
+                 <span key={index}>
+                   {line.includes('(') && line.includes(')') ? (
+                     <span className="text-lg">{line}</span>
+                   ) : (
+                     line
+                   )}
+                   {index < title.split('\n').length - 1 && <br />}
+                 </span>
+               ))
+             ) : (
+               title
+             )}
+           </h3>
          </div>
          
          {/* Zone de contenu avec hauteur flexible */}
