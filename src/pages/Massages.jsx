@@ -122,33 +122,10 @@ function MassageCard({ title, description, url, isExpanded, onToggle }) {
              {!isExpanded && (
                <>
                  <div className="mb-2 sm:mb-4 flex justify-center items-end space-x-1 hidden sm:flex">
-                    <span className="text-6xl text-zen-sage font-bold" style={{
-                      textShadow: '0 0 2px white, 0 0 4px white',
-                      animation: 'waveJump 3s infinite',
-                      animationDelay: '0s'
-                    }}>.</span>
-                    <span className="text-6xl text-zen-sage font-bold" style={{
-                      textShadow: '0 0 2px white, 0 0 4px white',
-                      animation: 'waveJump 3s infinite',
-                      animationDelay: '0.2s'
-                    }}>.</span>
-                    <span className="text-6xl text-zen-sage font-bold" style={{
-                      textShadow: '0 0 2px white, 0 0 4px white',
-                      animation: 'waveJump 3s infinite',
-                      animationDelay: '0.4s'
-                    }}>.</span>
+                    <span className="text-6xl text-zen-sage font-bold animated-dot-1">.</span>
+                    <span className="text-6xl text-zen-sage font-bold animated-dot-2">.</span>
+                    <span className="text-6xl text-zen-sage font-bold animated-dot-3">.</span>
                   </div>
-                  <style jsx>{`
-                    @keyframes waveJump {
-                      0%, 100% { transform: translateY(0); }
-                      8% { transform: translateY(-5px); }
-                      16% { transform: translateY(0); }
-                      24% { transform: translateY(-2.5px); }
-                      32% { transform: translateY(0); }
-                      40% { transform: translateY(0); }
-                      60% { transform: translateY(0); }
-                    }
-                  `}</style>
                </>
              )}
              <a

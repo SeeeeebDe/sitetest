@@ -1,3 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Animation des points pour compatibilité Safari iOS */
+@keyframes waveJump {
+  0%, 100% { transform: translateY(0); }
+  8% { transform: translateY(-5px); }
+  16% { transform: translateY(0); }
+  24% { transform: translateY(-2.5px); }
+  32% { transform: translateY(0); }
+  40% { transform: translateY(0); }
+  60% { transform: translateY(0); }
+}
+
+.animated-dot-1 {
+  text-shadow: 0 0 2px white, 0 0 4px white;
+  animation: waveJump 3s infinite;
+  animation-delay: 0s;
+  -webkit-animation: waveJump 3s infinite;
+  -webkit-animation-delay: 0s;
+}
+
+.animated-dot-2 {
+  text-shadow: 0 0 2px white, 0 0 4px white;
+  animation: waveJump 3s infinite;
+  animation-delay: 0.2s;
+  -webkit-animation: waveJump 3s infinite;
+  -webkit-animation-delay: 0.2s;
+}
+
+.animated-dot-3 {
+  text-shadow: 0 0 2px white, 0 0 4px white;
+  animation: waveJump 3s infinite;
+  animation-delay: 0.4s;
+  -webkit-animation: waveJump 3s infinite;
+  -webkit-animation-delay: 0.4s;
+}
