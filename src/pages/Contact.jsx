@@ -18,10 +18,10 @@ export default function Contact() {
 
     try {
       const result = await emailjs.sendForm(
-        'service_orbgw8n', // Remplacez par votre Service ID
-        'template_2tbvnfw', // Remplacez par votre Template ID
+        'service_orbgw8n',
+        'template_2tbvnfw',
         e.target,
-        'wvxl3buP95b69mirG' // Remplacez par votre Public Key
+        'wvxl3buP95b69mirG'
       );
       
       console.log('Email envoyé avec succès:', result.text);
@@ -41,16 +41,6 @@ export default function Contact() {
         <div className="color-layer-1 pointer-events-none"></div>
         <div className="color-layer-2 pointer-events-none"></div>
 
-        {/* Photo subtile en arrière-plan */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10 pointer-events-none"
-          style={{
-            backgroundImage: `url(${moiImage})`,
-            backgroundPosition: 'center 30%',
-            filter: 'blur(1px)'
-          }}
-        ></div>
-
         <motion.div
           className="bg-zen-cream/95 rounded-2xl shadow-zen p-10 max-w-xl w-full text-center relative z-10 backdrop-blur-sm"
           initial={{ opacity: 0, y: 40 }}
@@ -58,6 +48,28 @@ export default function Contact() {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl font-sans font-bold mb-6 text-zen-forest">Contact</h2>
+          
+          {/* Nouvelle carte avec photo et présentation */}
+          <motion.div
+            className="bg-white/80 rounded-xl p-6 mb-8 shadow-md"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <div className="flex flex-col items-center">
+              <img
+                src={moiImage}
+                alt="Sébastien Dréano"
+                className="w-24 h-24 rounded-full object-cover mb-4 shadow-lg"
+              />
+              <div className="text-zen-forest text-sm font-sans leading-relaxed text-center">
+                <p className="font-semibold mb-2">Sébastien Dréano</p>
+                <p>Formé et certifié à l'EIS Paris • Praticien depuis 2022</p>
+                <p>Basé à Cesson • Déplacement compris jusqu'à 20km</p>
+              </div>
+            </div>
+          </motion.div>
+
           {submitted ? (
             <div className="text-lg font-sans text-zen-forest mb-8">
               ✅ Merci pour votre message ! Je vous répondrai dans les plus brefs délais.

@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto text-center">
         
 
-          <p>&copy; 2024 Mon Instant Zen. Tous droits réservés.</p>
+          <p>&copy; 2025 Mon Instant Zen. Tous droits réservés.</p>
 
       </div>
     </footer>
