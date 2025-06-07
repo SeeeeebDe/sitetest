@@ -183,7 +183,7 @@ export default function Massages() {
               </h2>
               <p className="text-gray-700 mb-6 max-w-3xl mx-auto leading-relaxed">
                 Vous souhaitez offrir un cadeau attentionné, un moment de détente et de bien être ?<br/>
-                Cartes cadeaux avec un mot personnalisé, envoyées par email ou par courrier. 
+                Cartes cadeaux avec un mot personnalisé, envoyées par email ou par courrier. <br/>
                 Contactez-moi pour toute demande.
               </p>
               <Link 
