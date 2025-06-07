@@ -38,119 +38,89 @@ const massages = [
   },
 ];
 
-
 function MassageCard({ title, description, url, isExpanded, onToggle }) {
   return (
     <motion.div
-      className="rounded-lg overflow-hidden relative transition-all duration-700 cursor-pointer"
-      style={{
-        position: 'relative',
-        height: isExpanded ? 'auto' : 'clamp(30vh, 35vh, 40vh)',
-        minHeight: isExpanded ? 'auto' : 'clamp(30vh, 35vh, 40vh)'
-      }}
-      whileHover={{ 
-        scale: 1.02
-      }}
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.7 }}
-      onClick={onToggle}
+      className="bg-white/90 backdrop-blur-sm rounded-lg shadow-lg overflow-hidden border border-zen-sage/20 hover:shadow-zen transition-all duration-300"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+      layout
     >
-      {/* Image de fond */}
-      <img 
-        src={imageMap[title]} 
-        alt={title}
-        className="absolute inset-0 w-full h-full object-cover"
-      />
+      <div className="relative">
+        <img
+          src={imageMap[title]}
+          alt={title}
+          className="w-full h-64 object-cover transition-transform duration-300 hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+      </div>
       
-      {/* Effet de bordure vaporeuse très douce */}
-      <div 
-        className="absolute inset-0 rounded-lg pointer-events-none"
-        style={{
-          background: `
-            radial-gradient(circle at 0% 0%, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 20px, transparent 40px),
-            radial-gradient(circle at 100% 0%, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 20px, transparent 40px),
-            radial-gradient(circle at 0% 100%, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 20px, transparent 40px),
-            radial-gradient(circle at 100% 100%, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 20px, transparent 40px),
-            linear-gradient(0deg, rgba(255,255,255,0.12) 0px, rgba(255,255,255,0.06) 15px, transparent 30px),
-            linear-gradient(90deg, rgba(255,255,255,0.12) 0px, rgba(255,255,255,0.06) 15px, transparent 30px),
-            linear-gradient(180deg, rgba(255,255,255,0.12) 0px, rgba(255,255,255,0.06) 15px, transparent 30px),
-            linear-gradient(270deg, rgba(255,255,255,0.12) 0px, rgba(255,255,255,0.06) 15px, transparent 30px)
-          `,
-          filter: 'blur(0.5px)'
-        }}
-      />
-      
-      {/* Overlay pour la lisibilité */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#F5EBE0]/90 via-[#F5EBE0]/70 to-[#F5EBE0]/50 pointer-events-none" />
-      
-      {/* Contenu */}
-       <div className="relative z-10 h-full flex flex-col">
-         {/* Titre fixe en haut */}
-         <div className="p-8 pb-4">
-           <h3 className="text-2xl font-sans font-semibold text-center text-zen-forest">
-             {title.includes('\n') ? (
-               title.split('\n').map((line, index) => (
-                 <span key={index}>
-                   {line.includes('(') && line.includes(')') ? (
-                     <span className="text-lg">{line}</span>
-                   ) : (
-                     line
-                   )}
-                   {index < title.split('\n').length - 1 && <br />}
-                 </span>
-               ))
-             ) : (
-               title
-             )}
-           </h3>
-         </div>
-         
-         {/* Zone de contenu avec hauteur flexible */}
-         <div className="flex-1 px-8 flex flex-col justify-between min-h-0">
-           {/* Zone de texte - flexible et peut se réduire */}
-            <div className="text-center flex-1 min-h-0 overflow-hidden">
-              {/* Phrase d'accroche - visible sur tous les écrans */}
-              <div>
-                <p className="font-sans text-zen-earth text-base leading-relaxed italic mb-1 font-medium px-4 py-2 rounded-lg" style={{
-                  backgroundColor: 'rgba(255, 255, 255, 0.15)',
-                  backdropFilter: 'blur(2px)',
-                  boxShadow: '0 0 20px rgba(255, 255, 255, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.1)'
-                }}>
-                  {description.split('\n')[0]}
-                </p>
+      <div className="p-6">
+        <h3 className="text-xl font-bold text-zen-forest mb-4">{title}</h3>
+        
+        <div className="relative">
+          <div 
+            className={`text-gray-700 leading-relaxed transition-all duration-300 overflow-hidden ${
+              isExpanded ? 'max-h-none' : 'max-h-24'
+            }`}
+            style={{
+              WebkitMask: !isExpanded 
+                ? 'linear-gradient(to bottom, black 60%, transparent 100%)' 
+                : 'none',
+              mask: !isExpanded 
+                ? 'linear-gradient(to bottom, black 60%, transparent 100%)' 
+                : 'none'
+            }}
+          >
+            {description.split('\n').map((line, index) => (
+              <span key={index}>
+                {line}
+                {index < description.split('\n').length - 1 && <br />}
+              </span>
+            ))}
+          </div>
+        </div>
+        
+        <div className="flex justify-between items-center mt-6">
+          <div className="flex items-center space-x-2">
+            {!isExpanded && (
+              <div className="flex space-x-1 items-end">
+                <motion.span
+                  className="w-1 h-1 bg-zen-sage rounded-full"
+                  animate={{ y: [0, -2, 0, 0] }}
+                  transition={{ duration: 1.6, repeat: Infinity, delay: 0, times: [0, 0.2, 0.4, 1] }}
+                />
+                <motion.span
+                  className="w-1 h-1 bg-zen-sage rounded-full"
+                  animate={{ y: [0, -2, 0, 0] }}
+                  transition={{ duration: 1.6, repeat: Infinity, delay: 0.2, times: [0, 0.2, 0.4, 1] }}
+                />
+                <motion.span
+                  className="w-1 h-1 bg-zen-sage rounded-full"
+                  animate={{ y: [0, -2, 0, 0] }}
+                  transition={{ duration: 1.6, repeat: Infinity, delay: 0.4, times: [0, 0.2, 0.4, 1] }}
+                />
               </div>
-              
-              {/* Reste de la description - adaptatif selon la taille d'écran */}
-              <p className={`font-sans text-zen-gray-dark text-base leading-relaxed whitespace-pre-line ${
-                !isExpanded ? 'line-clamp-3 sm:line-clamp-4 md:line-clamp-5 lg:line-clamp-6' : ''
-              }`}>
-                {description.split('\n').slice(1).join('\n')}
-              </p>
-            </div>
-           
-           {/* Points de suspension et bouton - toujours en bas */}
-           <div className="text-center pb-8 flex-shrink-0">
-             {!isExpanded && (
-               <>
-                 <div className="mb-2 sm:mb-4 flex justify-center items-end space-x-1">
-                    <span className="text-6xl text-zen-sage font-bold animated-dot-1">.</span>
-                    <span className="text-6xl text-zen-sage font-bold animated-dot-2">.</span>
-                    <span className="text-6xl text-zen-sage font-bold animated-dot-3">.</span>
-                  </div>
-               </>
-             )}
-             <a
-               href={url}
-               className="inline-block bg-zen-sage text-white font-sans font-medium px-8 py-3 rounded-full hover:bg-zen-forest hover:shadow-zen transition-all duration-300 text-center"
-               onClick={(e) => e.stopPropagation()}
-             >
-               Réserver ce massage
-             </a>
-           </div>
-         </div>
-       </div>
+            )}
+            <button
+              onClick={onToggle}
+              className="text-zen-sage hover:text-zen-forest font-medium transition-colors duration-200"
+            >
+              {isExpanded ? 'Voir moins' : 'Voir plus'}
+            </button>
+          </div>
+          
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-zen-sage text-white font-medium px-6 py-2 rounded-full hover:bg-zen-forest hover:shadow-zen transition-all duration-300 transform hover:scale-105"
+          >
+            Réserver ce massage
+          </a>
+        </div>
+      </div>
     </motion.div>
   );
 }
@@ -163,7 +133,12 @@ export default function Massages() {
   };
 
   return (
-    <div className="relative overflow-hidden min-h-screen">
+    <motion.div 
+      className="relative overflow-hidden min-h-screen"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
       <main className="relaxing-background min-h-screen py-16 px-6">
         {/* Couches de couleurs pour l'effet de profondeur */}
         <div className="color-layer-1 pointer-events-none"></div>
@@ -172,13 +147,19 @@ export default function Massages() {
         <div className="max-w-6xl mx-auto relative z-10">
           <motion.h1
             className="text-4xl font-sans font-bold text-center mb-16 text-zen-forest drop-shadow-lg"
-            initial={{ opacity: 0, y: -30 }}
+            initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
             Les Massages
           </motion.h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 gap-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             {massages.map((massage, index) => (
               <MassageCard 
                 key={index} 
@@ -187,14 +168,14 @@ export default function Massages() {
                 onToggle={() => handleCardToggle(index)}
               />
             ))}
-          </div>
+          </motion.div>
           
           {/* Carte cadeau */}
           <motion.div
             className="mt-12 bg-white/90 backdrop-blur-sm rounded-lg shadow-lg p-8 border border-zen-sage/20"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
           >
             <div className="text-center">
               <h2 className="text-2xl font-bold text-zen-forest mb-4">
@@ -215,6 +196,6 @@ export default function Massages() {
           </motion.div>
         </div>
       </main>
-    </div>
+    </motion.div>
   );
 }
