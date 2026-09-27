@@ -20,18 +20,57 @@ export default function MentionsLegales() {
           Mentions légales
         </h1>
       <section className="mb-8">
-            <h2 className="text-2xl font-sans font-semibold mb-4 text-zen-forest">Conditions d'exercice et réservations</h2>
+            <h2 className="text-2xl font-sans font-semibold mb-4 text-zen-forest">Nature du service</h2>
             <div className="text-zen-gray-dark space-y-4" style={{ fontFamily: "'Poppins', sans-serif" }}>
               <p className="leading-relaxed">
-                Mon Instant Zen propose des prestations de massage bien-être à domicile, exclusivement destinées à la relaxation et au bien-être. Ces massages sont pratiqués uniquement au domicile du client, dans le respect des conditions suivantes :
+                Mon Instant Zen propose des prestations de massage bien-être à domicile, exclusivement destinées à la relaxation et au bien-être :
               </p>
               <ul className="list-disc list-inside space-y-3 ml-4">
-                <li>Les massages proposés sont strictement non thérapeutiques et ne peuvent en aucun cas être assimilés à des actes médicaux, paramédicaux ou relevant de la kinésithérapie.</li>
-                <li>Toute contre-indication médicale doit impérativement être signalée lors de la réservation ou au plus tard le jour du rendez-vous. Je décline toute responsabilité pour tout dommage résultant d'une information médicale non communiquée.</li>
-                <li>La confirmation définitive de la réservation est conditionnée par la réception du paiement.</li>
+              <li>Les massages proposés sont strictement non thérapeutiques et ne peuvent en aucun cas être assimilés à des actes médicaux, paramédicaux ou relevant de la kinésithérapie.</li>
+              <li>La prestation est réalisée telle que décrite, dans le respect de la vertue, et ne comporte aucune possibilité outrepassant les descriptions affichées.</li>
+              <li>Toute demande en dehors de ce cadre sera refusée et pourra faire l'objet de poursuites.</li>
+              <li>Lieu de massage : les massages sont pratiqués uniquement au domicile du client.</li>
+              </ul>
+            </div>
+      </section>
+
+      <section className="mb-8">
+            <h2 className="text-2xl font-sans font-semibold mb-4 text-zen-forest">Modalités de réservation</h2>
+            <div className="text-zen-gray-dark space-y-4" style={{ fontFamily: "'Poppins', sans-serif" }}>
+              <ul className="list-disc list-inside space-y-3 ml-4">
+                <li>Pour une première réservation, un entretien téléphonique nous permettra de répondre à toute question et de vérifier ensemble l'adéquation à vos besoins.</li>
+                <li>Pour toute demande de réservation, vous recevrez un questionnaire et les présentes mentions légales, le tout à compléter et signer en ligne.</li>
+                <li>Une empreinte banquaire de 0€ vous sera également demandée, toute annulation non prévenue ou prestation commencée pouvant donner lieu à une facturation du montant du massage réservé.
+                <li>Enfin, la confirmation définitive de réservation vous sera alors adressée par mail.</li>
                 <li>Vous disposez de la possibilité de modifier ou d'annuler votre réservation jusqu'à 24 heures avant l'heure du rendez-vous, avec remboursement intégral.</li>
                 <li>En cas de circonstances exceptionnelles, je me réserve le droit de reporter un rendez-vous, avec proposition d'un nouveau créneau dans les meilleurs délais.</li>
               </ul>
+            </div>
+      </section>
+
+      <section className="mb-8">
+            <h2 className="text-2xl font-sans font-semibold mb-4 text-zen-forest">Incompatibilités et contre-indications médicales</h2>
+            <div className="text-zen-gray-dark space-y-4" style={{ fontFamily: "'Poppins', sans-serif" }}>
+              <p className="leading-relaxed">
+                Le massage bien-être requiert certaines précautions pour garantir votre sécurité et votre confort. Toute contre-indication médicale doit impérativement être signalée lors de la réservation ou au plus tard le jour du rendez-vous. Je décline toute responsabilité pour tout dommage résultant d'une information médicale non communiquée.
+              </p>
+              <p className="leading-relaxed">
+                Les massages sont notamment déconseillés ou nécessitent un accord médical préalable dans les cas suivants :
+              </p>
+              <ul className="list-disc list-inside space-y-3 ml-4">
+                <li>Grossesse (dans ce cas, s'orienter vers un praticien en Massage prénatal)</li>
+                <li>Blessures récentes, entorses, fractures, traumatismes osseux ou musculaires en cours de guérison</li>
+                <li>Opérations chirurgicales récentes (moins de 3 mois, ou selon avis médical)</li>
+                <li>Problèmes de tension artérielle (hypertension ou hypotension sévère non stabilisés)</li>
+                <li>Problèmes cardiaques, troubles de la circulation ou phlébite en cours</li>
+                <li>Fièvre, état infectieux, inflammation cutanée, mycose ou toute maladie contagieuse</li>
+                <li>Tumeurs malignes ou cancers en cours de traitement (sur accord médical uniquement)</li>
+                <li>Pathologies inflammatoires chroniques (arthrite, arthrose en poussée aiguë)</li>
+                <li>État d'ébriété ou sous l'emprise de substances psychoactives</li>
+              </ul>
+              <p className="leading-relaxed">
+                En cas de doute sur votre état de santé, n'hésitez pas à consulter votre médecin traitant avant de réserver une séance de massage.
+              </p>
             </div>
       </section>
 

@@ -1,5 +1,5 @@
 // pages/Home.jsx
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "../styles/animated-bg.css";
@@ -13,8 +13,13 @@ export default function Accueil() {
   const [showDiscoverButton, setShowDiscoverButton] = useState(true);
 
   // Variables pour ajuster facilement le logo et l'effet de fade
-  const logoBaseWidth = 120; // Largeur de base du logo en pixels (taille quand scrollé)
-  const fadeOpacityMultiplier = 0.9; // Multiplicateur pour réduire l'opacité dans les coins
+  const logoBaseWidth = 120;
+  const fadeOpacityMultiplier = 0.9;
+
+  // Utilisation de useMotionValue pour des animations plus fluides
+  const scrollYMotion = useMotionValue(0);
+  const logoScale = useTransform(scrollYMotion, [0, 150], [3, 1]);
+  const logoOpacity = useTransform(scrollYMotion, [0, 300], [1, 0.9]);
 
   useEffect(() => {
     let ticking = false;
@@ -24,9 +29,9 @@ export default function Accueil() {
         requestAnimationFrame(() => {
           const currentScrollY = window.scrollY;
           setScrollY(currentScrollY);
+          scrollYMotion.set(currentScrollY); // Mise à jour du MotionValue
           setIsScrolled(currentScrollY > 100);
           
-          // Masquer le bouton dès qu'on scroll un peu
           if (currentScrollY > 50) {
             setShowDiscoverButton(false);
           } else {
@@ -47,19 +52,10 @@ export default function Accueil() {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [scrollYMotion]);
 
-  // Calcul de la taille du logo basé sur le scroll avec lissage
-  const logoScale = Math.max(1, 3 - (scrollY / 150) * 2);
-  const logoOpacity = Math.max(0.9, 1 - (scrollY / 300));
-  
-  // Calcul de la largeur adaptative du logo basé sur la fenêtre du navigateur
-  const maxLogoWidth = windowWidth * 0.5; // 50% de la largeur de la fenêtre du navigateur
-  const scaledLogoWidth = logoBaseWidth * logoScale;
-  const logoWidth = Math.min(scaledLogoWidth, maxLogoWidth / logoScale * logoScale);
-  
   // Paramètres ajustables pour l'effet du logo
-  const fadeEffectColor = '235, 220, 190'; // RGB values for rgba()
+  const fadeEffectColor = '235, 220, 190';
 
   return (
     <div className="relative overflow-hidden min-h-screen">
@@ -77,52 +73,32 @@ export default function Accueil() {
         <motion.div 
           className="relative flex justify-center items-center"
           initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: logoOpacity, scale: 1 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           style={{
-            marginBottom: logoScale > 1 ? `${5 + (logoScale - 1) * 7}vh` : '2vh'
+            marginTop: '8vh',
+            marginBottom: scrollY > 150 ? '3vh' : `${4 + Math.max(0, (3 - scrollY / 75)) * 5}vh` // Augmenté l'espace en dessous
           }}
         >
-          <img 
+          <motion.img 
             src={logo} 
             alt="Mon Instant Zen" 
-            className="w-auto mx-auto transition-all duration-500"
+            className="w-auto mx-auto"
             style={{ 
               opacity: logoOpacity,
-              transform: `scale(${logoScale})`,
+              scale: logoScale,
               width: `${logoBaseWidth}px`,
               height: 'auto',
-              maxWidth: '50vw', // 70% de la largeur de la fenêtre (viewport width)
+              maxWidth: '50vw', // Changé de 25vw à 50vw pour limiter à 50% de l'écran
               borderRadius: '12px',
-              boxShadow: logoScale > 1 ? `
-                0 0 0 ${(logoScale - 1) * 1}px rgba(${fadeEffectColor}, ${(logoScale - 1) * (1/(1*1)) * fadeOpacityMultiplier}),
-                0 0 0 ${(logoScale - 1) * 2}px rgba(${fadeEffectColor}, ${(logoScale - 1) * (1/(1.5*1.5)) * fadeOpacityMultiplier}),
-                0 0 0 ${(logoScale - 1) * 3}px rgba(${fadeEffectColor}, ${(logoScale - 1) * (1/(2*2)) * fadeOpacityMultiplier}),
-                0 0 0 ${(logoScale - 1) * 4}px rgba(${fadeEffectColor}, ${(logoScale - 1) * (1/(2.5*2.5)) * fadeOpacityMultiplier}),
-                0 0 0 ${(logoScale - 1) * 5}px rgba(${fadeEffectColor}, ${(logoScale - 1) * (1/(3*3)) * fadeOpacityMultiplier}),
-                0 0 0 ${(logoScale - 1) * 6}px rgba(${fadeEffectColor}, ${(logoScale - 1) * (1/(3.5*3.5)) * fadeOpacityMultiplier}),
-                0 0 0 ${(logoScale - 1) * 7}px rgba(${fadeEffectColor}, ${(logoScale - 1) * (1/(4*4)) * fadeOpacityMultiplier}),
-                0 0 0 ${(logoScale - 1) * 8}px rgba(${fadeEffectColor}, ${(logoScale - 1) * (1/(4.5*4.5)) * fadeOpacityMultiplier}),
-                0 0 0 ${(logoScale - 1) * 9}px rgba(${fadeEffectColor}, ${(logoScale - 1) * (1/(5*5)) * fadeOpacityMultiplier}),
-                0 0 0 ${(logoScale - 1) * 10}px rgba(${fadeEffectColor}, ${(logoScale - 1) * (1/(5.5*5.5)) * fadeOpacityMultiplier}),
-                0 0 0 ${(logoScale - 1) * 11}px rgba(${fadeEffectColor}, ${(logoScale - 1) * (1/(6*6)) * fadeOpacityMultiplier}),
-                0 0 0 ${(logoScale - 1) * 12}px rgba(${fadeEffectColor}, ${(logoScale - 1) * (1/(6.5*6.5)) * fadeOpacityMultiplier}),
-                0 0 0 ${(logoScale - 1) * 13}px rgba(${fadeEffectColor}, ${(logoScale - 1) * (1/(7*7)) * fadeOpacityMultiplier}),
-                0 0 0 ${(logoScale - 1) * 14}px rgba(${fadeEffectColor}, ${(logoScale - 1) * (1/(7.5*7.5)) * fadeOpacityMultiplier}),
-                0 0 0 ${(logoScale - 1) * 15}px rgba(${fadeEffectColor}, ${(logoScale - 1) * (1/(8*8)) * fadeOpacityMultiplier}),
-                0 0 0 ${(logoScale - 1) * 16}px rgba(${fadeEffectColor}, ${(logoScale - 1) * (1/(8.5*8.5)) * fadeOpacityMultiplier}),
-                0 0 0 ${(logoScale - 1) * 17}px rgba(${fadeEffectColor}, ${(logoScale - 1) * (1/(9*9)) * fadeOpacityMultiplier}),
-                0 0 0 ${(logoScale - 1) * 18}px rgba(${fadeEffectColor}, ${(logoScale - 1) * (1/(9.5*9.5)) * fadeOpacityMultiplier}),
-                0 0 0 ${(logoScale - 1) * 19}px rgba(${fadeEffectColor}, ${(logoScale - 1) * (1/(10*10)) * fadeOpacityMultiplier}),
-                0 0 0 ${(logoScale - 1) * 20}px rgba(${fadeEffectColor}, ${(logoScale - 1) * (1/(10.5*10.5)) * fadeOpacityMultiplier})
-              ` : 'none'
+              filter: scrollY > 150 ? 'none' : `drop-shadow(0 0 ${Math.max(0, (3 - scrollY / 75)) * 10}px rgba(${fadeEffectColor}, 0.3))`
             }}
           />
         </motion.div>
   
         {/* Phrase d'accroche - toujours visible et taille fixe */}
         <motion.h1 
-          className="text-4xl font-bold mb-8 drop-shadow-lg max-w-3xl text-white text-center relative z-10"
+          className="text-4xl font-bold mb-6 drop-shadow-lg max-w-3xl text-white text-center relative z-10"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}

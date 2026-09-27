@@ -10,6 +10,9 @@ import Accueil from "./pages/Accueil";
 import Massages from "./pages/Massages";
 import Contact from "./pages/Contact";
 import MentionsLegales from "./pages/MentionsLegales";
+import Satisfaction from "./pages/Satisfaction";
+import SatisfactionStats from "./pages/SatisfactionStats";
+import SatisfactionManage from "./pages/SatisfactionManage";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -66,6 +69,45 @@ function AnimatedRoutes() {
               transition={{ duration: 0.4 }}
             >
               <MentionsLegales />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/satisfaction"
+          element={
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4 }}
+            >
+              <Satisfaction />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/satisfaction/stats"
+          element={
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4 }}
+            >
+              <SatisfactionStats />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/satisfaction/manage"
+          element={
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4 }}
+            >
+              <SatisfactionManage />
             </motion.div>
           }
         />

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Logo from "../images/LOGO.png";
+import TitreImage from "../images/titre.gif";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -10,8 +11,12 @@ export default function Navbar() {
     <nav className="bg-zen-cream shadow-zen px-6 py-4 font-sans sticky top-0 z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
-          <img src={Logo} alt="Logo" className="h-8 w-8" />
-          <span className="text-xl font-bold text-zen-forest font-sans">Mon Instant Zen</span>
+          <img src={Logo} alt="Logo" className="h-12 w-12 rounded" />
+          <img 
+            src={TitreImage} 
+            alt="Mon Instant Zen" 
+            className="h-8 w-auto max-w-[200px] sm:max-w-[250px] md:max-w-[300px] object-contain mt-2 ml-4"
+          />
         </Link>
         <div className="hidden md:flex gap-8 items-center">
           <NavLink

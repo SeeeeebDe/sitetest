@@ -1,0 +1,35 @@
+# Configuration pour OVHcloud hébergement mutualisé
+# Activation du module de réécriture
+RewriteEngine On
+
+# Désactiver MultiViews pour éviter les conflits
+Options -MultiViews
+
+# Forcer HTTPS (optionnel)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Gestion des fichiers statiques - ne pas rediriger
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Redirection pour les routes React Router
+# Exclure les fichiers avec extensions
+RewriteCond %{REQUEST_URI} !\.[^./]+$
+RewriteRule ^ /index.html [L]
+
+# Fallback pour toutes les autres routes SPA
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]
+
+# Configuration des en-têtes pour les fichiers statiques
+<IfModule mod_expires.c>
+    ExpiresActive on
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+</IfModule>
