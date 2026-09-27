@@ -40,7 +40,7 @@ export default function MentionsLegales() {
               <ul className="list-disc list-inside space-y-3 ml-4">
                 <li>Pour une première réservation, un entretien téléphonique nous permettra de répondre à toute question et de vérifier ensemble l'adéquation à vos besoins.</li>
                 <li>Pour toute demande de réservation, vous recevrez un questionnaire et les présentes mentions légales, le tout à compléter et signer en ligne.</li>
-                <li>Une empreinte banquaire de 0€ vous sera également demandée, toute annulation non prévenue ou prestation commencée pouvant donner lieu à une facturation du montant du massage réservé.
+                <li>Une empreinte banquaire de 0€ vous sera également demandée, toute annulation non prévenue ou prestation commencée pouvant donner lieu à une facturation du montant du massage réservé.</li>
                 <li>Enfin, la confirmation définitive de réservation vous sera alors adressée par mail.</li>
                 <li>Vous disposez de la possibilité de modifier ou d'annuler votre réservation jusqu'à 24 heures avant l'heure du rendez-vous, avec remboursement intégral.</li>
                 <li>En cas de circonstances exceptionnelles, je me réserve le droit de reporter un rendez-vous, avec proposition d'un nouveau créneau dans les meilleurs délais.</li>
